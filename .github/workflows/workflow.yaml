@@ -4,6 +4,16 @@ on:
     branches:
       - master
 
+env:
+  AWS_REGION: eu-west-1
+
+permissions:
+  id-token: write
+  contents: read # This is required for actions/checkout
+  # pull-requests: write
+  # issues: write
+  # repository-projects: write
+
 jobs:
   Build:
     name: Build
@@ -17,7 +27,7 @@ jobs:
         with:
           role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/github-actions-ecr-push
           role-session-name: ecr_session
-          aws-region: eu-west-1
+          aws-region: ${{ env.AWS_REGION }}
 
       - name: Login to Amazon ECR
         id: login-ecr
