@@ -1,0 +1,8 @@
+$ docker build -t ubuntu-eks .
+docker images
+$ docker ps
+$ docker ps -a
+$ docker run ubuntu-eks
+$ docker container prune
+$ docker image prune
+docker build -f MyDockerfile .
